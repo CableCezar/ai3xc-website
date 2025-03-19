@@ -577,7 +577,7 @@
         document.querySelector('#contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
             const formData = new FormData(this);
-            fetch('https://your-subdomain.loca.lt/webhook/website-agent', {
+            fetch(fetch('https://fifty-chicken-scream.loca.lt/webhook/website-agent', {, {
                 method: 'POST',
                 body: formData
             }).then(response => {

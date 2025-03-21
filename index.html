@@ -586,7 +586,7 @@
         const message = formData.get('message');
 
         // Send data to n8n webhook
-        fetch('https://easy-guests-shout.loca.lt', {
+        fetch('https://https://easy-guests-shout.loca.lt/webhook/website-agent-airtable', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, phone, business, message })

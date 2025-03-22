@@ -652,7 +652,7 @@
         console.log('Sending form data:', { name, email, phone, business, message });
 
         // Send data to n8n webhook
-        fetch('https://ai3xc.app.n8n.cloud/webhook/instructor-booking', {
+        fetch('https://ai3xc.app.n8n.cloud/webhook/webhook/instructor-booking', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ name, email, phone, business, message }),

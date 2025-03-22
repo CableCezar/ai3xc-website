@@ -587,10 +587,11 @@
 
         // Send data to n8n webhook
         fetch('https://ai3xc.app.n8n.cloud/webhook/instructor-booking', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ name, email, phone, business, message })
-        })
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ name, email, phone, business, message }),
+    mode: 'no-cors'
+})
         .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
@@ -602,6 +603,68 @@
             // Show success message based on language
             const lang = document.querySelector('html').getAttribute('lang');
             alert(lang === 'nl' ? 'Formulier succesvol verzonden!' : 'Form submitted successfully!');
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            // Show error message based on language
+            const lang = document.querySelector('html').getAttribute('lang');
+            alert(lang === 'nl' ? 'Fout bij het verzenden van het formulier. Probeer het opnieuw.' : 'Error submitting form. Please try again.');
+        });
+    });
+<script>
+    // Language toggle function
+    function setLanguage(lang) {
+        const elements = document.querySelectorAll('[class*="lang-"]');
+        elements.forEach(el => {
+            const classes = el.className.split(' ');
+            classes.forEach(cls => {
+                if (cls.startsWith('lang-')) {
+                    const langPart = cls.split('-')[1];
+                    if (langPart === lang) el.classList.remove('hidden');
+                    else el.classList.add('hidden');
+                }
+            });
+        });
+        document.querySelector('html').setAttribute('lang', lang);
+    }
+
+    // Initial language (Dutch)
+    setLanguage('nl');
+
+    // Language switcher event
+    document.querySelector('.language-toggle').addEventListener('change', function(e) {
+        setLanguage(e.target.value);
+    });
+
+    // Form submission to n8n webhook
+    document.querySelector('#contactForm').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        // Extract form data
+        const formData = new FormData(this);
+        const name = formData.get('name');
+        const email = formData.get('email');
+        const phone = formData.get('phone');
+        const business = formData.get('business');
+        const message = formData.get('message');
+
+        // Debug log
+        console.log('Sending form data:', { name, email, phone, business, message });
+
+        // Send data to n8n webhook
+        fetch('https://ai3xc.app.n8n.cloud/webhook/instructor-booking', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ name, email, phone, business, message }),
+            mode: 'no-cors'
+        })
+        .then(() => {
+            console.log('Request sent successfully');
+            // Show success message based on language
+            const lang = document.querySelector('html').getAttribute('lang');
+            alert(lang === 'nl' ? 'Formulier succesvol verzonden!' : 'Form submitted successfully!');
+            // Reset the form
+            document.querySelector('#contactForm').reset();
         })
         .catch(error => {
             console.error('Error:', error);

@@ -171,7 +171,6 @@
     </style>
 </head>
 <body>
-    <!-- Header -->
     <header>
         <div class="container">
             <nav>
@@ -198,7 +197,6 @@
         </div>
     </header>
 
-    <!-- Hero Section -->
     <section class="hero">
         <div class="container">
             <h1 class="lang-nl">Automatiseer je afspraken.<br>Groei je bedrijf.</h1>
@@ -210,7 +208,6 @@
         </div>
     </section>
 
-    <!-- Features Section -->
     <section class="features" id="features">
         <div class="container">
             <h2 class="section-title lang-nl">Waarom AI3XC?</h2>
@@ -262,7 +259,6 @@
         </div>
     </section>
 
-    <!-- How It Works -->
     <section class="how-it-works" id="how-it-works">
         <div class="container">
             <h2 class="section-title lang-nl">Hoe werkt het?</h2>
@@ -308,7 +304,6 @@
         </div>
     </section>
 
-    <!-- Use Cases -->
     <section class="use-cases" id="use-cases">
         <div class="container">
             <h2 class="section-title lang-nl">Perfect voor</h2>
@@ -346,7 +341,6 @@
         </div>
     </section>
 
-    <!-- Testimonials -->
     <section class="testimonials">
         <div class="container">
             <h2 class="section-title lang-nl">Wat onze klanten zeggen</h2>
@@ -380,7 +374,6 @@
         </div>
     </section>
 
-    <!-- Pricing -->
     <section class="pricing" id="pricing">
         <div class="container">
             <h2 class="section-title lang-nl">Eenvoudige Prijzen</h2>
@@ -389,7 +382,7 @@
                 <div class="pricing-card">
                     <h3 class="lang-nl">Starter</h3>
                     <h3 class="lang-en hidden">Starter</h3>
-                    <div class="price">€29<span>/maand</span></div>
+                    <div class="price">€129<span>/maand</span></div>
                     <p class="lang-nl">Perfect voor kleine ondernemers die net beginnen</p>
                     <p class="lang-en hidden">Perfect for small business owners just starting out</p>
                     <ul class="pricing-features">
@@ -411,7 +404,7 @@
                     <div class="popular">Populair</div>
                     <h3 class="lang-nl">Professional</h3>
                     <h3 class="lang-en hidden">Professional</h3>
-                    <div class="price">€59<span>/maand</span></div>
+                    <div class="price">€159<span>/maand</span></div>
                     <p class="lang-nl">Voor groeiende bedrijven met regelmatige afspraken</p>
                     <p class="lang-en hidden">For growing businesses with regular appointments</p>
                     <ul class="pricing-features">
@@ -434,7 +427,7 @@
                 <div class="pricing-card">
                     <h3 class="lang-nl">Enterprise</h3>
                     <h3 class="lang-en hidden">Enterprise</h3>
-                    <div class="price">€99<span>/maand</span></div>
+                    <div class="price">€299<span>/maand</span></div>
                     <p class="lang-nl">Voor gevestigde bedrijven met complexe behoeften</p>
                     <p class="lang-en hidden">For established businesses with complex needs</p>
                     <ul class="pricing-features">
@@ -458,7 +451,6 @@
         </div>
     </section>
 
-    <!-- Contact -->
     <section class="contact" id="contact">
         <div class="container">
             <h2 class="section-title lang-nl">Neem contact op</h2>
@@ -497,7 +489,6 @@
         </div>
     </section>
 
-    <!-- Footer -->
     <footer>
         <div class="container">
             <div class="footer-content">
@@ -593,19 +584,26 @@
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, phone, business, message }),
-                
+                // mode: 'no-cors' // This line was correctly removed previously
             })
-            .then(() => {
-                console.log('Request sent successfully');
-                // Show success message based on language
+            .then(response => { // Added response handling
+                console.log('Request sent. Status:', response.status);
+                if (!response.ok) { // Check if response is not OK (status 200-299)
+                    // Try to get error message from n8n if available
+                    return response.text().then(text => {
+                         throw new Error(`Server responded with ${response.status}: ${text || 'No error message from server'}`);
+                    });
+                }
+                return response.text(); // Or response.json() if n8n sends a JSON success message
+            })
+            .then(data => { // data here is the response body from n8n
+                console.log('Response from server:', data);
                 const lang = document.querySelector('html').getAttribute('lang');
                 alert(lang === 'nl' ? 'Formulier succesvol verzonden!' : 'Form submitted successfully!');
-                // Reset the form
                 document.querySelector('#contactForm').reset();
             })
             .catch(error => {
-                console.error('Error:', error);
-                // Show error message based on language
+                console.error('Error submitting form:', error); // Changed console message slightly
                 const lang = document.querySelector('html').getAttribute('lang');
                 alert(lang === 'nl' ? 'Fout bij het verzenden van het formulier. Probeer het opnieuw.' : 'Error submitting form. Please try again.');
             });

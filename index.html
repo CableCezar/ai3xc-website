@@ -88,13 +88,6 @@
             background-color: var(--primary-dark);
         }
         
-        .language-toggle {
-            padding: 5px;
-            border-radius: 5px;
-            background-color: white;
-            border: 1px solid #e2e8f0;
-        }
-        
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%);
@@ -161,9 +154,10 @@
         .footer-links a { color: #cbd5e1; text-decoration: none; transition: color 0.3s; }
         .footer-links a:hover { color: white; }
         .copyright { text-align: center; padding-top: 30px; border-top: 1px solid rgba(255, 255, 255, 0.1); color: #94a3b8; font-size: 14px; }
-        .hidden { display: none; }
+        /* .hidden class is no longer strictly needed by the language script, but might be used elsewhere or can be removed if not */
+        .hidden { display: none; } 
         @media (max-width: 768px) {
-            .nav-links { display: none; }
+            .nav-links { display: none; } /* This will hide nav links on mobile, consider a hamburger menu later */
             .hero h1 { font-size: 36px; }
             .hero p { font-size: 18px; }
             .step { flex-direction: column; }
@@ -176,84 +170,58 @@
             <nav>
                 <div class="logo">AI3XC</div>
                 <div class="nav-links">
-                    <a href="#features" class="lang-nl">Functies</a>
-                    <a href="#features" class="lang-en hidden">Features</a>
-                    <a href="#how-it-works" class="lang-nl">Hoe het werkt</a>
-                    <a href="#how-it-works" class="lang-en hidden">How It Works</a>
-                    <a href="#use-cases" class="lang-nl">Voor wie</a>
-                    <a href="#use-cases" class="lang-en hidden">For Whom</a>
-                    <a href="#pricing" class="lang-nl">Prijzen</a>
-                    <a href="#pricing" class="lang-en hidden">Pricing</a>
-                    <a href="#contact" class="lang-nl">Contact</a>
-                    <a href="#contact" class="lang-en hidden">Contact</a>
+                    <a href="#features">Functies</a>
+                    <a href="#how-it-works">Hoe het werkt</a>
+                    <a href="#use-cases">Voor wie</a>
+                    <a href="#pricing">Prijzen</a>
+                    <a href="#contact">Contact</a>
                 </div>
-                <a href="#contact" class="cta-button lang-nl">Gratis Demo</a>
-                <a href="#contact" class="cta-button lang-en hidden">Free Demo</a>
-                <select class="language-toggle" onchange="setLanguage(this.value)">
-                    <option value="nl">Nederlands</option>
-                    <option value="en">English</option>
-                </select>
-            </nav>
+                <a href="#contact" class="cta-button">Gratis Demo</a>
+                </nav>
         </div>
     </header>
 
     <section class="hero">
         <div class="container">
-            <h1 class="lang-nl">Automatiseer je afspraken.<br>Groei je bedrijf.</h1>
-            <h1 class="lang-en hidden">Automate Your Appointments.<br>Grow Your Business.</h1>
-            <p class="lang-nl">AI3XC is de slimme afsprakenbeheertool die kleine ondernemers en freelancers tijd bespaart door het planningsproces volledig te automatiseren.</p>
-            <p class="lang-en hidden">AI3XC is the smart appointment management tool that saves small business owners and freelancers time by fully automating the scheduling process.</p>
-            <a href="#contact" class="cta-button lang-nl">Start Vandaag</a>
-            <a href="#contact" class="cta-button lang-en hidden">Start Today</a>
+            <h1>Automatiseer je afspraken.<br>Groei je bedrijf.</h1>
+            <p>AI3XC is de slimme afsprakenbeheertool die kleine ondernemers en freelancers tijd bespaart door het planningsproces volledig te automatiseren.</p>
+            <a href="#contact" class="cta-button">Start Vandaag</a>
         </div>
     </section>
 
     <section class="features" id="features">
         <div class="container">
-            <h2 class="section-title lang-nl">Waarom AI3XC?</h2>
-            <h2 class="section-title lang-en hidden">Why AI3XC?</h2>
+            <h2 class="section-title">Waarom AI3XC?</h2>
             <div class="features-grid">
                 <div class="feature-card">
                     <div class="feature-icon">⏱️</div>
-                    <h3 class="lang-nl">Tijdsbesparing</h3>
-                    <h3 class="lang-en hidden">Time Saving</h3>
-                    <p class="lang-nl">Stop met handmatig plannen en e-mailen. Bespaar tot 10 uur per week met volledig geautomatiseerd afspraakbeheer.</p>
-                    <p class="lang-en hidden">Stop manual scheduling and emailing. Save up to 10 hours per week with fully automated appointment management.</p>
+                    <h3>Tijdsbesparing</h3>
+                    <p>Stop met handmatig plannen en e-mailen. Bespaar tot 10 uur per week met volledig geautomatiseerd afspraakbeheer.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🤖</div>
-                    <h3 class="lang-nl">AI-Gedreven</h3>
-                    <h3 class="lang-en hidden">AI-Driven</h3>
-                    <p class="lang-nl">Onze AI-technologie leert van jouw bedrijf en optimaliseert je planning voor maximale efficiëntie.</p>
-                    <p class="lang-en hidden">Our AI technology learns from your business and optimizes your schedule for maximum efficiency.</p>
+                    <h3>AI-Gedreven</h3>
+                    <p>Onze AI-technologie leert van jouw bedrijf en optimaliseert je planning voor maximale efficiëntie.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🔄</div>
-                    <h3 class="lang-nl">Naadloze Integratie</h3>
-                    <h3 class="lang-en hidden">Seamless Integration</h3>
-                    <p class="lang-nl">Werkt perfect samen met je bestaande tools zoals Gmail, Outlook en andere kalenders.</p>
-                    <p class="lang-en hidden">Works seamlessly with your existing tools like Gmail, Outlook, and other calendars.</p>
+                    <h3>Naadloze Integratie</h3>
+                    <p>Werkt perfect samen met je bestaande tools zoals Gmail, Outlook en andere kalenders.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📱</div>
-                    <h3 class="lang-nl">Mobielvriendelijk</h3>
-                    <h3 class="lang-en hidden">Mobile-Friendly</h3>
-                    <p class="lang-nl">Je klanten kunnen gemakkelijk afspraken maken vanaf elk apparaat, op elk moment.</p>
-                    <p class="lang-en hidden">Your clients can easily book appointments from any device, anytime.</p>
+                    <h3>Mobielvriendelijk</h3>
+                    <p>Je klanten kunnen gemakkelijk afspraken maken vanaf elk apparaat, op elk moment.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">📊</div>
-                    <h3 class="lang-nl">Inzichtelijke Data</h3>
-                    <h3 class="lang-en hidden">Insightful Data</h3>
-                    <p class="lang-nl">Krijg waardevolle inzichten in je afspraakpatronen om betere zakelijke beslissingen te nemen.</p>
-                    <p class="lang-en hidden">Get valuable insights into your appointment patterns to make better business decisions.</p>
+                    <h3>Inzichtelijke Data</h3>
+                    <p>Krijg waardevolle inzichten in je afspraakpatronen om betere zakelijke beslissingen te nemen.</p>
                 </div>
                 <div class="feature-card">
                     <div class="feature-icon">🛡️</div>
-                    <h3 class="lang-nl">Veilig & Betrouwbaar</h3>
-                    <h3 class="lang-en hidden">Safe & Reliable</h3>
-                    <p class="lang-nl">Jouw gegevens zijn veilig met onze hoogwaardige beveiliging en betrouwbare infrastructuur.</p>
-                    <p class="lang-en hidden">Your data is secure with our high-quality security and reliable infrastructure.</p>
+                    <h3>Veilig & Betrouwbaar</h3>
+                    <p>Jouw gegevens zijn veilig met onze hoogwaardige beveiliging en betrouwbare infrastructuur.</p>
                 </div>
             </div>
         </div>
@@ -261,43 +229,34 @@
 
     <section class="how-it-works" id="how-it-works">
         <div class="container">
-            <h2 class="section-title lang-nl">Hoe werkt het?</h2>
-            <h2 class="section-title lang-en hidden">How It Works?</h2>
+            <h2 class="section-title">Hoe werkt het?</h2>
             <div class="steps">
                 <div class="step">
                     <div class="step-number">1</div>
                     <div class="step-content">
-                        <h3 class="lang-nl">Eenvoudige installatie</h3>
-                        <h3 class="lang-en hidden">Easy Installation</h3>
-                        <p class="lang-nl">We zetten je gepersonaliseerde afspraakpagina op en integreren deze met je website. Geen technische kennis vereist.</p>
-                        <p class="lang-en hidden">We set up your personalized appointment page and integrate it with your website. No technical knowledge required.</p>
+                        <h3>Eenvoudige installatie</h3>
+                        <p>We zetten je gepersonaliseerde afspraakpagina op en integreren deze met je website. Geen technische kennis vereist.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">2</div>
                     <div class="step-content">
-                        <h3 class="lang-nl">Klanten boeken afspraken</h3>
-                        <h3 class="lang-en hidden">Clients Book Appointments</h3>
-                        <p class="lang-nl">Klanten vinden je beschikbaarheid in realtime en boeken zelf hun afspraak op een moment dat hen uitkomt.</p>
-                        <p class="lang-en hidden">Clients find your availability in real-time and book their appointments at a time that suits them.</p>
+                        <h3>Klanten boeken afspraken</h3>
+                        <p>Klanten vinden je beschikbaarheid in realtime en boeken zelf hun afspraak op een moment dat hen uitkomt.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">3</div>
                     <div class="step-content">
-                        <h3 class="lang-nl">Automatische verwerking</h3>
-                        <h3 class="lang-en hidden">Automatic Processing</h3>
-                        <p class="lang-nl">Onze slimme backend verwerkt alles: bevestigingen, herinneringen, en kalenderupdates worden automatisch verzonden.</p>
-                        <p class="lang-en hidden">Our smart backend handles everything: confirmations, reminders, and calendar updates are sent automatically.</p>
+                        <h3>Automatische verwerking</h3>
+                        <p>Onze slimme backend verwerkt alles: bevestigingen, herinneringen, en kalenderupdates worden automatisch verzonden.</p>
                     </div>
                 </div>
                 <div class="step">
                     <div class="step-number">4</div>
                     <div class="step-content">
-                        <h3 class="lang-nl">Focus op je werk</h3>
-                        <h3 class="lang-en hidden">Focus on Your Work</h3>
-                        <p class="lang-nl">Terwijl AI3XC je planning beheert, kun jij je concentreren op wat je het beste doet: je klanten helpen en je bedrijf laten groeien.</p>
-                        <p class="lang-en hidden">While AI3XC manages your schedule, you can focus on what you do best: helping your clients and growing your business.</p>
+                        <h3>Focus op je werk</h3>
+                        <p>Terwijl AI3XC je planning beheert, kun jij je concentreren op wat je het beste doet: je klanten helpen en je bedrijf laten groeien.</p>
                     </div>
                 </div>
             </div>
@@ -306,36 +265,27 @@
 
     <section class="use-cases" id="use-cases">
         <div class="container">
-            <h2 class="section-title lang-nl">Perfect voor</h2>
-            <h2 class="section-title lang-en hidden">Perfect For</h2>
+            <h2 class="section-title">Perfect voor</h2>
             <div class="use-cases-grid">
                 <div class="use-case-card">
                     <div class="use-case-icon">💇‍♀️</div>
-                    <h3 class="lang-nl">Schoonheidssalons</h3>
-                    <h3 class="lang-en hidden">Beauty Salons</h3>
-                    <p class="lang-nl">Beheer moeiteloos afspraken voor verschillende behandelingen en stylisten.</p>
-                    <p class="lang-en hidden">Effortlessly manage appointments for various treatments and stylists.</p>
+                    <h3>Schoonheidssalons</h3>
+                    <p>Beheer moeiteloos afspraken voor verschillende behandelingen en stylisten.</p>
                 </div>
                 <div class="use-case-card">
                     <div class="use-case-icon">🧘‍♀️</div>
-                    <h3 class="lang-nl">Therapeuten</h3>
-                    <h3 class="lang-en hidden">Therapists</h3>
-                    <p class="lang-nl">Geef cliënten de vrijheid om sessies te boeken wanneer ze dat nodig hebben.</p>
-                    <p class="lang-en hidden">Give clients the freedom to book sessions when they need them.</p>
+                    <h3>Therapeuten</h3>
+                    <p>Geef cliënten de vrijheid om sessies te boeken wanneer ze dat nodig hebben.</p>
                 </div>
                 <div class="use-case-card">
                     <div class="use-case-icon">📚</div>
-                    <h3 class="lang-nl">Tutors & Coaches</h3>
-                    <h3 class="lang-en hidden">Tutors & Coaches</h3>
-                    <p class="lang-nl">Organiseer je lessen en coaching sessies zonder gedoe met planningen.</p>
-                    <p class="lang-en hidden">Organize your lessons and coaching sessions without scheduling hassles.</p>
+                    <h3>Tutors & Coaches</h3>
+                    <p>Organiseer je lessen en coaching sessies zonder gedoe met planningen.</p>
                 </div>
                 <div class="use-case-card">
                     <div class="use-case-icon">🩺</div>
-                    <h3 class="lang-nl">Zorgprofessionals</h3>
-                    <h3 class="lang-en hidden">Healthcare Professionals</h3>
-                    <p class="lang-nl">Stroomlijn je patiëntenafspraken en verminder no-shows.</p>
-                    <p class="lang-en hidden">Streamline your patient appointments and reduce no-shows.</p>
+                    <h3>Zorgprofessionals</h3>
+                    <p>Stroomlijn je patiëntenafspraken en verminder no-shows.</p>
                 </div>
             </div>
         </div>
@@ -343,31 +293,24 @@
 
     <section class="testimonials">
         <div class="container">
-            <h2 class="section-title lang-nl">Wat onze klanten zeggen</h2>
-            <h2 class="section-title lang-en hidden">What Our Customers Say</h2>
+            <h2 class="section-title">Wat onze klanten zeggen</h2>
             <div class="testimonial-card">
-                <p class="lang-nl">"Sinds ik AI3XC gebruik, heb ik mijn klantenbestand met 30% kunnen uitbreiden zonder extra administratieve druk. De automatische herinneringen hebben mijn no-shows met 80% verminderd!"</p>
-                <p class="lang-en hidden">"Since using AI3XC, I’ve been able to expand my client base by 30% without extra administrative burden. The automatic reminders have reduced my no-shows by 80%!"</p>
+                <p>"Sinds ik AI3XC gebruik, heb ik mijn klantenbestand met 30% kunnen uitbreiden zonder extra administratieve druk. De automatische herinneringen hebben mijn no-shows met 80% verminderd!"</p>
                 <div class="client-info">
                     <div class="client-avatar"></div>
                     <div>
-                        <strong class="lang-nl">Lisa de Vries</strong>
-                        <strong class="lang-en hidden">Lisa de Vries</strong><br>
-                        <small class="lang-nl">Schoonheidsspecialist, Amsterdam</small>
-                        <small class="lang-en hidden">Beauty Specialist, Amsterdam</small>
+                        <strong>Lisa de Vries</strong><br>
+                        <small>Schoonheidsspecialist, Amsterdam</small>
                     </div>
                 </div>
             </div>
             <div class="testimonial-card">
-                <p class="lang-nl">"Als therapeut was ik altijd tijd kwijt aan het plannen van afspraken. AI3XC heeft me niet alleen tijd bespaard, maar ook geholpen mijn praktijk professioneler te maken. Mijn cliënten zijn dol op het gebruiksgemak."</p>
-                <p class="lang-en hidden">"As a therapist, I was always tied up scheduling appointments. AI3XC has not only saved me time but also helped make my practice more professional. My clients love the ease of use."</p>
+                <p>"Als therapeut was ik altijd tijd kwijt aan het plannen van afspraken. AI3XC heeft me niet alleen tijd bespaard, maar ook geholpen mijn praktijk professioneler te maken. Mijn cliënten zijn dol op het gebruiksgemak."</p>
                 <div class="client-info">
                     <div class="client-avatar"></div>
                     <div>
-                        <strong class="lang-nl">Thomas Bakker</strong>
-                        <strong class="lang-en hidden">Thomas Bakker</strong><br>
-                        <small class="lang-nl">Fysiotherapeut, Utrecht</small>
-                        <small class="lang-en hidden">Physiotherapist, Utrecht</small>
+                        <strong>Thomas Bakker</strong><br>
+                        <small>Fysiotherapeut, Utrecht</small>
                     </div>
                 </div>
             </div>
@@ -376,76 +319,49 @@
 
     <section class="pricing" id="pricing">
         <div class="container">
-            <h2 class="section-title lang-nl">Eenvoudige Prijzen</h2>
-            <h2 class="section-title lang-en hidden">Simple Pricing</h2>
+            <h2 class="section-title">Eenvoudige Prijzen</h2>
             <div class="pricing-grid">
                 <div class="pricing-card">
-                    <h3 class="lang-nl">Starter</h3>
-                    <h3 class="lang-en hidden">Starter</h3>
+                    <h3>Starter</h3>
                     <div class="price">€129<span>/maand</span></div>
-                    <p class="lang-nl">Perfect voor kleine ondernemers die net beginnen</p>
-                    <p class="lang-en hidden">Perfect for small business owners just starting out</p>
+                    <p>Perfect voor kleine ondernemers die net beginnen</p>
                     <ul class="pricing-features">
-                        <li class="lang-nl">Tot 50 afspraken per maand</li>
-                        <li class="lang-en hidden">Up to 50 appointments per month</li>
-                        <li class="lang-nl">Basis e-mailherinneringen</li>
-                        <li class="lang-en hidden">Basic email reminders</li>
-                        <li class="lang-nl">Kalenderintegratie</li>
-                        <li class="lang-en hidden">Calendar integration</li>
-                        <li class="lang-nl">Online boekingspagina</li>
-                        <li class="lang-en hidden">Online booking page</li>
-                        <li class="lang-nl">E-mail support</li>
-                        <li class="lang-en hidden">Email support</li>
+                        <li>Tot 50 afspraken per maand</li>
+                        <li>Basis e-mailherinneringen</li>
+                        <li>Kalenderintegratie</li>
+                        <li>Online boekingspagina</li>
+                        <li>E-mail support</li>
                     </ul>
-                    <a href="#contact" class="cta-button lang-nl">Start Nu</a>
-                    <a href="#contact" class="cta-button lang-en hidden">Start Now</a>
+                    <a href="#contact" class="cta-button">Start Nu</a>
                 </div>
                 <div class="pricing-card">
                     <div class="popular">Populair</div>
-                    <h3 class="lang-nl">Professional</h3>
-                    <h3 class="lang-en hidden">Professional</h3>
+                    <h3>Professional</h3>
                     <div class="price">€159<span>/maand</span></div>
-                    <p class="lang-nl">Voor groeiende bedrijven met regelmatige afspraken</p>
-                    <p class="lang-en hidden">For growing businesses with regular appointments</p>
+                    <p>Voor groeiende bedrijven met regelmatige afspraken</p>
                     <ul class="pricing-features">
-                        <li class="lang-nl">Onbeperkte afspraken</li>
-                        <li class="lang-en hidden">Unlimited appointments</li>
-                        <li class="lang-nl">SMS-herinneringen</li>
-                        <li class="lang-en hidden">SMS reminders</li>
-                        <li class="lang-nl">Aangepaste branding</li>
-                        <li class="lang-en hidden">Custom branding</li>
-                        <li class="lang-nl">Meerdere teamleden</li>
-                        <li class="lang-en hidden">Multiple team members</li>
-                        <li class="lang-nl">Prioriteit support</li>
-                        <li class="lang-en hidden">Priority support</li>
-                        <li class="lang-nl">Analyse & rapportages</li>
-                        <li class="lang-en hidden">Analytics & reports</li>
+                        <li>Onbeperkte afspraken</li>
+                        <li>SMS-herinneringen</li>
+                        <li>Aangepaste branding</li>
+                        <li>Meerdere teamleden</li>
+                        <li>Prioriteit support</li>
+                        <li>Analyse & rapportages</li>
                     </ul>
-                    <a href="#contact" class="cta-button lang-nl">Start Nu</a>
-                    <a href="#contact" class="cta-button lang-en hidden">Start Now</a>
+                    <a href="#contact" class="cta-button">Start Nu</a>
                 </div>
                 <div class="pricing-card">
-                    <h3 class="lang-nl">Enterprise</h3>
-                    <h3 class="lang-en hidden">Enterprise</h3>
+                    <h3>Enterprise</h3>
                     <div class="price">€299<span>/maand</span></div>
-                    <p class="lang-nl">Voor gevestigde bedrijven met complexe behoeften</p>
-                    <p class="lang-en hidden">For established businesses with complex needs</p>
+                    <p>Voor gevestigde bedrijven met complexe behoeften</p>
                     <ul class="pricing-features">
-                        <li class="lang-nl">Alles uit Professional</li>
-                        <li class="lang-en hidden">Everything from Professional</li>
-                        <li class="lang-nl">API-toegang</li>
-                        <li class="lang-en hidden">API access</li>
-                        <li class="lang-nl">Aangepaste workflows</li>
-                        <li class="lang-en hidden">Custom workflows</li>
-                        <li class="lang-nl">Geavanceerde integraties</li>
-                        <li class="lang-en hidden">Advanced integrations</li>
-                        <li class="lang-nl">Dedicated accountmanager</li>
-                        <li class="lang-en hidden">Dedicated account manager</li>
-                        <li class="lang-nl">24/7 premium support</li>
-                        <li class="lang-en hidden">24/7 premium support</li>
+                        <li>Alles uit Professional</li>
+                        <li>API-toegang</li>
+                        <li>Aangepaste workflows</li>
+                        <li>Geavanceerde integraties</li>
+                        <li>Dedicated accountmanager</li>
+                        <li>24/7 premium support</li>
                     </ul>
-                    <a href="#contact" class="cta-button lang-nl">Start Nu</a>
-                    <a href="#contact" class="cta-button lang-en hidden">Start Now</a>
+                    <a href="#contact" class="cta-button">Start Nu</a>
                 </div>
             </div>
         </div>
@@ -453,37 +369,30 @@
 
     <section class="contact" id="contact">
         <div class="container">
-            <h2 class="section-title lang-nl">Neem contact op</h2>
-            <h2 class="section-title lang-en hidden">Contact Us</h2>
+            <h2 class="section-title">Neem contact op</h2>
             <div class="contact-form">
                 <form id="contactForm">
                     <div class="form-group">
-                        <label for="name" class="lang-nl">Naam</label>
-                        <label for="name" class="lang-en hidden">Name</label>
+                        <label for="name">Naam</label>
                         <input type="text" id="name" name="name" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="email" class="lang-nl">E-mail</label>
-                        <label for="email" class="lang-en hidden">Email</label>
+                        <label for="email">E-mail</label>
                         <input type="email" id="email" name="email" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="phone" class="lang-nl">Telefoonnummer</label>
-                        <label for="phone" class="lang-en hidden">Phone Number</label>
+                        <label for="phone">Telefoonnummer</label>
                         <input type="tel" id="phone" name="phone" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="business" class="lang-nl">Bedrijfsnaam</label>
-                        <label for="business" class="lang-en hidden">Business Name</label>
+                        <label for="business">Bedrijfsnaam</label>
                         <input type="text" id="business" name="business" class="form-control">
                     </div>
                     <div class="form-group">
-                        <label for="message" class="lang-nl">Bericht</label>
-                        <label for="message" class="lang-en hidden">Message</label>
+                        <label for="message">Bericht</label>
                         <textarea id="message" name="message" class="form-control" required></textarea>
                     </div>
-                    <button type="submit" class="submit-button lang-nl">Verstuur</button>
-                    <button type="submit" class="submit-button lang-en hidden">Send</button>
+                    <button type="submit" class="submit-button">Verstuur</button>
                 </form>
             </div>
         </div>
@@ -493,91 +402,44 @@
         <div class="container">
             <div class="footer-content">
                 <div class="footer-column">
-                    <h3 class="lang-nl">AI3XC</h3>
-                    <h3 class="lang-en hidden">AI3XC</h3>
-                    <p class="lang-nl">Slimme afspraakbeheer voor ondernemers en freelancers in Nederland.</p>
-                    <p class="lang-en hidden">Smart appointment management for entrepreneurs and freelancers in the Netherlands.</p>
+                    <h3>AI3XC</h3>
+                    <p>Slimme afspraakbeheer voor ondernemers en freelancers in Nederland.</p>
                 </div>
                 <div class="footer-column">
-                    <h3 class="lang-nl">Links</h3>
-                    <h3 class="lang-en hidden">Links</h3>
+                    <h3>Links</h3>
                     <ul class="footer-links">
-                        <li><a href="#features" class="lang-nl">Functies</a><a href="#features" class="lang-en hidden">Features</a></li>
-                        <li><a href="#how-it-works" class="lang-nl">Hoe het werkt</a><a href="#how-it-works" class="lang-en hidden">How It Works</a></li>
-                        <li><a href="#use-cases" class="lang-nl">Voor wie</a><a href="#use-cases" class="lang-en hidden">For Whom</a></li>
-                        <li><a href="#pricing" class="lang-nl">Prijzen</a><a href="#pricing" class="lang-en hidden">Pricing</a></li>
-                        <li><a href="#contact" class="lang-nl">Contact</a><a href="#contact" class="lang-en hidden">Contact</a></li>
+                        <li><a href="#features">Functies</a></li>
+                        <li><a href="#how-it-works">Hoe het werkt</a></li>
+                        <li><a href="#use-cases">Voor wie</a></li>
+                        <li><a href="#pricing">Prijzen</a></li>
+                        <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3 class="lang-nl">Contact</h3>
-                    <h3 class="lang-en hidden">Contact</h3>
+                    <h3>Contact</h3>
                     <ul class="footer-links">
-                        <li class="lang-nl">info@ai3xc.co</li>
-                        <li class="lang-en hidden">info@ai3xc.co</li>
-                        <li class="lang-nl">+31 20 123 4567</li>
-                        <li class="lang-en hidden">+31 20 123 4567</li>
-                        <li class="lang-nl">Amsterdam, Nederland</li>
-                        <li class="lang-en hidden">Amsterdam, Netherlands</li>
+                        <li>info@ai3xc.co</li>
+                        <li>+31 20 123 4567</li>
+                        <li>Amsterdam, Nederland</li>
                     </ul>
                 </div>
                 <div class="footer-column">
-                    <h3 class="lang-nl">Volg ons</h3>
-                    <h3 class="lang-en hidden">Follow Us</h3>
+                    <h3>Volg ons</h3>
                     <ul class="footer-links">
-                        <li><a href="#" class="lang-nl">LinkedIn</a><a href="#" class="lang-en hidden">LinkedIn</a></li>
-                        <li><a href="#" class="lang-nl">Twitter</a><a href="#" class="lang-en hidden">Twitter</a></li>
-                        <li><a href="#" class="lang-nl">Facebook</a><a href="#" class="lang-en hidden">Facebook</a></li>
-                        <li><a href="#" class="lang-nl">Instagram</a><a href="#" class="lang-en hidden">Instagram</a></li>
+                        <li><a href="#">LinkedIn</a></li>
+                        <li><a href="#">Twitter</a></li>
+                        <li><a href="#">Facebook</a></li>
+                        <li><a href="#">Instagram</a></li>
                     </ul>
                 </div>
             </div>
             <div class="copyright">
-                <p class="lang-nl">© 2025 AI3XC. Alle rechten voorbehouden.</p>
-                <p class="lang-en hidden">© 2025 AI3XC. All rights reserved.</p>
+                <p>© 2025 AI3XC. Alle rechten voorbehouden.</p>
             </div>
         </div>
     </footer>
 
     <script>
-        // Language toggle function
-        function setLanguage(lang) {
-            const elements = document.querySelectorAll('[class*="lang-"]');
-            elements.forEach(el => {
-                // If the element itself contains a lang- class for the selected language, show it
-                // If it contains a lang- class for a *different* language, hide it
-                let showElement = false;
-                let hideElement = false;
-                const elClasses = el.className.split(' ');
-
-                for (const cls of elClasses) {
-                    if (cls.startsWith('lang-')) {
-                        const langPart = cls.split('-')[1];
-                        if (langPart === lang) {
-                            showElement = true;
-                        } else {
-                            hideElement = true;
-                        }
-                    }
-                }
-
-                if (showElement) {
-                    el.classList.remove('hidden');
-                } else if (hideElement) { // Only hide if it's meant for another language and not the current one
-                    el.classList.add('hidden');
-                }
-            });
-            document.querySelector('html').setAttribute('lang', lang);
-        }
-
-        // Initial language (Dutch)
-        setLanguage('nl');
-
-        // Language switcher event
-        document.querySelector('.language-toggle').addEventListener('change', function(e) {
-            setLanguage(e.target.value);
-        });
-
         // Form submission to n8n webhook
         document.querySelector('#contactForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -610,16 +472,16 @@
             })
             .then(data => { 
                 console.log('Response from server:', data);
-                const lang = document.querySelector('html').getAttribute('lang');
-                alert(lang === 'nl' ? 'Formulier succesvol verzonden!' : 'Form submitted successfully!');
+                alert('Formulier succesvol verzonden!'); // Only Dutch alert now
                 document.querySelector('#contactForm').reset();
             })
             .catch(error => {
                 console.error('Error submitting form:', error); 
-                const lang = document.querySelector('html').getAttribute('lang');
-                alert(lang === 'nl' ? 'Fout bij het verzenden van het formulier. Probeer het opnieuw.' : 'Error submitting form. Please try again.');
+                alert('Fout bij het verzenden van het formulier. Probeer het opnieuw.'); // Only Dutch alert now
             });
         });
     </script>
 </body>
 </html>
+```
+

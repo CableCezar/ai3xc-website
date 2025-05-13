@@ -544,14 +544,28 @@
         function setLanguage(lang) {
             const elements = document.querySelectorAll('[class*="lang-"]');
             elements.forEach(el => {
-                const classes = el.className.split(' ');
-                classes.forEach(cls => {
+                // If the element itself contains a lang- class for the selected language, show it
+                // If it contains a lang- class for a *different* language, hide it
+                let showElement = false;
+                let hideElement = false;
+                const elClasses = el.className.split(' ');
+
+                for (const cls of elClasses) {
                     if (cls.startsWith('lang-')) {
                         const langPart = cls.split('-')[1];
-                        if (langPart === lang) el.classList.remove('hidden');
-                        else el.classList.add('hidden');
+                        if (langPart === lang) {
+                            showElement = true;
+                        } else {
+                            hideElement = true;
+                        }
                     }
-                });
+                }
+
+                if (showElement) {
+                    el.classList.remove('hidden');
+                } else if (hideElement) { // Only hide if it's meant for another language and not the current one
+                    el.classList.add('hidden');
+                }
             });
             document.querySelector('html').setAttribute('lang', lang);
         }
@@ -584,26 +598,24 @@
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, phone, business, message }),
-                // mode: 'no-cors' // This line was correctly removed previously
             })
-            .then(response => { // Added response handling
+            .then(response => {
                 console.log('Request sent. Status:', response.status);
-                if (!response.ok) { // Check if response is not OK (status 200-299)
-                    // Try to get error message from n8n if available
+                if (!response.ok) {
                     return response.text().then(text => {
                          throw new Error(`Server responded with ${response.status}: ${text || 'No error message from server'}`);
                     });
                 }
-                return response.text(); // Or response.json() if n8n sends a JSON success message
+                return response.text(); 
             })
-            .then(data => { // data here is the response body from n8n
+            .then(data => { 
                 console.log('Response from server:', data);
                 const lang = document.querySelector('html').getAttribute('lang');
                 alert(lang === 'nl' ? 'Formulier succesvol verzonden!' : 'Form submitted successfully!');
                 document.querySelector('#contactForm').reset();
             })
             .catch(error => {
-                console.error('Error submitting form:', error); // Changed console message slightly
+                console.error('Error submitting form:', error); 
                 const lang = document.querySelector('html').getAttribute('lang');
                 alert(lang === 'nl' ? 'Fout bij het verzenden van het formulier. Probeer het opnieuw.' : 'Error submitting form. Please try again.');
             });
